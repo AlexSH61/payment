@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/AlexSH61/payment1/foundation/logger"
+	"github.com/AlexSH61/payment/foundation/logger"
 	"github.com/kelseyhightower/envconfig"
 	"go.uber.org/zap"
 )
