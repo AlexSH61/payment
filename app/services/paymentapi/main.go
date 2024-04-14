@@ -16,7 +16,7 @@ func main() {
 		os.Exit(1)
 	}
 	defer log.Sync()
-	if err != nil {
+	if err = run(log); err != nil {
 		log.Errorw("startup", "ERROR", err)
 		os.Exit(1)
 	}
@@ -27,7 +27,7 @@ func run(log *zap.SugaredLogger) error {
 	if err != nil {
 		return err
 	}
-	log.Infow("startup", "OK! Connection")
-	log.Infow("startup", "ENV", &cfg.Env)
+	log.Infow("startup", "STATUS", "OK!")
+	log.Infow("cfg", "ENV", &cfg.Env)
 	return nil
 }

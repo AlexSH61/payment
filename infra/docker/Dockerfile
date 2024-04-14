@@ -1,5 +1,9 @@
-FROM golang AS Builder
-COPY go.mod go.sum
-RUN go mod download
-EXPOSE 8001
-CMD [ "./cmd" ]
+FROM golang:alpine3.9 AS builder
+RUN mkdir app
+ADD . /app
+WORKDIR /app
+RUN CGO_ENABLED=0 GOOS=linux go build -o app payment/app/services/paymentapi/main.go
+
+FROM alpine AS production
+COPY --from=builder /app .
+CMD [ "./app" ]
