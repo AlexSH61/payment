@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  namespace: shop-system
+spec:
+  selector:
+    matchLabels:
+      app: payment
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      Labels:
+        app: payment
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetrk: true

@@ -1,8 +1,8 @@
 FROM golang:alpine3.9 AS builder
-RUN mkdir app
+RUN mkdir /app
 ADD . /app
 WORKDIR /app
-RUN CGO_ENABLED=0 GOOS=linux go build -o app payment/app/services/paymentapi/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build 
 
 FROM alpine AS production
 COPY --from=builder /app .
